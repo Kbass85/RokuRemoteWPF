@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RokuRemoteWPF"
         mc:Ignorable="d"
         Background="#FF944C9E"
-        Title="Roku Remote" Height="650" Width="325" FontSize="14" FontWeight="Normal" FontStyle="Normal">
+        Title="Roku Remote" Height="400" Width="325" FontSize="14" FontWeight="Normal" FontStyle="Normal">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
