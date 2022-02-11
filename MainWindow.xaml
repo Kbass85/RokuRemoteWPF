@@ -34,8 +34,8 @@
         </Grid.RowDefinitions>
             <!-- Row 1 -->
         <Label Content="Select Device:" Grid.Row="1" Grid.Column="1"/>
-        <ComboBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="0 0 0 5"
-                  ItemsSource="{Binding rokuDevices}" DisplayMemberPath="FriendlyName" SelectionChanged="ComboSelected"></ComboBox>
+        <ComboBox x:Name="comboOne" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="0 0 0 5"
+                  ItemsSource="{Binding rokuDevices}" DisplayMemberPath="FriendlyName" SelectionChanged="ComboSelected" ></ComboBox>
         <!-- Row 2 -->
         <Button x:Name="refreshButton" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="0 0 0 5" Click="RefreshDeviceList">Refresh</Button> 
         <!-- Row 3 -->

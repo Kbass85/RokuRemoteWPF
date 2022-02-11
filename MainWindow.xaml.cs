@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,9 +27,10 @@ namespace RokuRemoteWPF
         InitializeComponent();
             DataContext = this;
             //public List<RokuTools.RokuTools.RokuDevice> rokuDevices = RokuTools.RokuTools.Disco2().ToList();
+            RefreshDeviceList(null,null);
         }
 
-        public List<RokuTools.RokuTools.RokuDevice> rokuDevices { get; set; } = RokuTools.RokuTools.Disco2().ToList();
+        public static List<RokuTools.RokuTools.RokuDevice> rokuDevices { get; set; }
 
         public string ipAddress;
         public string manualIp { get; set; } = "Enter IP Address...";
@@ -53,9 +55,12 @@ namespace RokuRemoteWPF
             ipAddress = device.IpAddress;  
         }
 
-        private void RefreshDeviceList(object sender, RoutedEventArgs e)
+        private async void RefreshDeviceList(object sender, RoutedEventArgs e)
         {
-            rokuDevices = RokuTools.RokuTools.Disco2().ToList();
+        rokuDevices = await Task.Run(() => RokuTools.RokuTools.Disco2().ToList());
+        //Update ComboBox
+        ((ComboBox)comboOne).GetBindingExpression(ComboBox.ItemsSourceProperty)
+                      .UpdateTarget();
         }
 
         private void SendManualCommand(object sender, RoutedEventArgs e)
