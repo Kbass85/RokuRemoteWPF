@@ -24,9 +24,8 @@ namespace RokuRemoteWPF
     {
         public MainWindow()
         {
-        InitializeComponent();
+            InitializeComponent();
             DataContext = this;
-            //public List<RokuTools.RokuTools.RokuDevice> rokuDevices = RokuTools.RokuTools.Disco2().ToList();
             RefreshDeviceList(null,null);
         }
 
@@ -57,10 +56,9 @@ namespace RokuRemoteWPF
 
         private async void RefreshDeviceList(object sender, RoutedEventArgs e)
         {
-        rokuDevices = await Task.Run(() => RokuTools.RokuTools.Disco2().ToList());
-        //Update ComboBox
-        ((ComboBox)comboOne).GetBindingExpression(ComboBox.ItemsSourceProperty)
-                      .UpdateTarget();
+            rokuDevices = await Task.Run(() => RokuTools.RokuTools.Disco2().ToList());
+                            //Update ComboBox
+            comboOne.ItemsSource = rokuDevices;
         }
 
         private void SendManualCommand(object sender, RoutedEventArgs e)
